@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "graphene-djmoney"
+version = "0.1.0"
+description = "GraphQL Money types for Django using graphene and django-money (djmoney)."
+authors = ["Paul Craciunoiu <paul@craciunoiu.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+graphene = "<3"
+Django = ">2"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
