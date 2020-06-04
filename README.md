@@ -11,17 +11,23 @@ query Products {
     products {
         id
         cost {
-            ...moneyFieldInfo
+            ...moneyFragment
         }
     }
 }
 
-fragment moneyFieldInfo on MoneyField {
-    amount
+fragment moneyFragment on Money {
+    asString  # "123.45 USD"
+    amount    # 123.45
+    amountStr # "123.45"
     currency {
-        code
-        name
+        code  # "USD"
+        name  # "US Dollar"
+        # These are not as commonly used, see tests:
+        numeric
         symbol
+        prefix
+        suffix
     }
 }
 ```
@@ -30,24 +36,28 @@ With this code:
 
 ```python
 # yourapp/models.py
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from djmoney.models.fields import MoneyField
 
 
-class Product(models.Model):
-    """
-    A bid and/or comments on a line item by a builder.
-    """
+class User(AbstractUser):
+    pass
 
+
+class Product(models.Model):
+    creator = models.ForeignKey(User, related_name="products", on_delete=models.CASCADE)
+    title = models.CharField(max_length=2000)
     cost = MoneyField(
         max_digits=settings.CURRENCY_MAX_DIGITS,
         decimal_places=settings.CURRENCY_DECIMAL_PLACES,
-        default_currency=settings.DEFAULT_CURRENCY,
+        default_currency=settings.BASE_CURRENCY,
         null=True,
         blank=True,
     )
 
-# yourapp/graphql/types.py
+# yourapp/schema/types.py
 
 import graphene
 from graphene_django import DjangoObjectType
@@ -61,16 +71,22 @@ class Product(DjangoObjectType):
         interfaces = (graphene.relay.Node,)
         fields = ("id", "cost")
 
-# yourapp/schema.py
+# yourapp/schema/__init__.py
 
-from .graphql import types
+import graphene
+
+from .. import models
+from .types import Product
 
 class Queries(graphene.ObjectType):
 
     products = graphene.List(graphene.NonNull(types.Product), required=True)
 
+    def resolve_products(self, info, **kwargs):
+        return models.Product.objects.all()
 
-schema = graphene.Schema(query=Queries, types=types)
+
+schema = graphene.Schema(query=Queries, types=[Product])
 
 # yourapp/settings.py
 
@@ -91,5 +107,11 @@ pip install graphene-djmoney
 ```
 
 ## Contributing
+
+Running tests:
+
+```bash
+poetry run pytest
+```
 
 Still TODO. For now, please open a pull request or issue.

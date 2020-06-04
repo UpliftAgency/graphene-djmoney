@@ -1,0 +1,16 @@
+*.pyc
+__pycache__
+.pytest_cache
+report.html
+__generated__
+*.egg-info/
+
+# Editor
+.idea
+.vscode
+.*.swp
+
+# misc
+.DS_Store
+.env
+

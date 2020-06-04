@@ -1,0 +1,515 @@
+[[package]]
+category = "main"
+description = "A library for parsing ISO 8601 strings."
+name = "aniso8601"
+optional = false
+python-versions = "*"
+version = "7.0.0"
+
+[[package]]
+category = "main"
+description = "ASGI specs, helper code, and adapters"
+name = "asgiref"
+optional = false
+python-versions = ">=3.5"
+version = "3.2.7"
+
+[package.extras]
+tests = ["pytest (>=4.3.0,<4.4.0)", "pytest-asyncio (>=0.10.0,<0.11.0)"]
+
+[[package]]
+category = "main"
+description = "Atomic file writes."
+name = "atomicwrites"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "1.4.0"
+
+[[package]]
+category = "main"
+description = "Classes Without Boilerplate"
+name = "attrs"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "19.3.0"
+
+[package.extras]
+azure-pipelines = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "pytest-azurepipelines"]
+dev = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "sphinx", "pre-commit"]
+docs = ["sphinx", "zope.interface"]
+tests = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
+
+[[package]]
+category = "main"
+description = "Cross-platform colored terminal text."
+marker = "sys_platform == \"win32\" and python_version != \"3.4\""
+name = "colorama"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "0.4.1"
+
+[[package]]
+category = "main"
+description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
+name = "django"
+optional = false
+python-versions = ">=3.6"
+version = "3.0.7"
+
+[package.dependencies]
+asgiref = ">=3.2,<4.0"
+pytz = "*"
+sqlparse = ">=0.2.2"
+
+[package.extras]
+argon2 = ["argon2-cffi (>=16.1.0)"]
+bcrypt = ["bcrypt"]
+
+[[package]]
+category = "main"
+description = "Adds support for using money and currency fields in django models and forms. Uses py-moneyed as the money implementation."
+name = "django-money"
+optional = false
+python-versions = ">=3.5"
+version = "1.1"
+
+[package.dependencies]
+Django = ">=1.11"
+py-moneyed = ">=0.8"
+setuptools = "*"
+
+[package.extras]
+exchange = ["certifi"]
+test = ["pytest (>=3.1.0)", "pytest-django", "pytest-pythonpath", "pytest-cov", "django-reversion"]
+
+[[package]]
+category = "main"
+description = "GraphQL Framework for Python"
+name = "graphene"
+optional = false
+python-versions = "*"
+version = "2.1.8"
+
+[package.dependencies]
+aniso8601 = ">=3,<=7"
+graphql-core = ">=2.1,<3"
+graphql-relay = ">=2,<3"
+six = ">=1.10.0,<2"
+
+[package.extras]
+django = ["graphene-django"]
+sqlalchemy = ["graphene-sqlalchemy"]
+test = ["pytest", "pytest-benchmark", "pytest-cov", "pytest-mock", "snapshottest", "coveralls", "promise", "six", "mock", "pytz", "iso8601"]
+
+[[package]]
+category = "main"
+description = "Graphene Django integration"
+name = "graphene-django"
+optional = false
+python-versions = "*"
+version = "2.10.1"
+
+[package.dependencies]
+Django = ">=1.11"
+graphene = ">=2.1.7,<3"
+graphql-core = ">=2.1.0,<3"
+promise = ">=2.1"
+singledispatch = ">=3.4.0.3"
+six = ">=1.10.0"
+
+[package.extras]
+dev = ["black (19.10b0)", "flake8 (3.7.9)", "flake8-black (0.1.1)", "flake8-bugbear (20.1.4)", "pytest (>=3.6.3)", "pytest-cov", "coveralls", "mock", "pytz", "pytest-django (>=3.3.2)", "djangorestframework (>=3.6.3)", "django-filter (<2)", "django-filter (>=2)"]
+rest_framework = ["djangorestframework (>=3.6.3)"]
+test = ["pytest (>=3.6.3)", "pytest-cov", "coveralls", "mock", "pytz", "pytest-django (>=3.3.2)", "djangorestframework (>=3.6.3)", "django-filter (<2)", "django-filter (>=2)"]
+
+[[package]]
+category = "main"
+description = "GraphQL implementation for Python"
+name = "graphql-core"
+optional = false
+python-versions = "*"
+version = "2.3.2"
+
+[package.dependencies]
+promise = ">=2.3,<3"
+rx = ">=1.6,<2"
+six = ">=1.10.0"
+
+[package.extras]
+gevent = ["gevent (>=1.1)"]
+test = ["six (1.14.0)", "pyannotate (1.2.0)", "pytest (4.6.10)", "pytest-django (3.9.0)", "pytest-cov (2.8.1)", "coveralls (1.11.1)", "cython (0.29.17)", "gevent (1.5.0)", "pytest-benchmark (3.2.3)", "pytest-mock (2.0.0)"]
+
+[[package]]
+category = "main"
+description = "Relay implementation for Python"
+name = "graphql-relay"
+optional = false
+python-versions = "*"
+version = "2.0.1"
+
+[package.dependencies]
+graphql-core = ">=2.2,<3"
+promise = ">=2.2,<3"
+six = ">=1.12"
+
+[[package]]
+category = "main"
+description = "Read metadata from Python packages"
+marker = "python_version < \"3.8\""
+name = "importlib-metadata"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
+version = "1.1.3"
+
+[package.dependencies]
+zipp = ">=0.5"
+
+[package.extras]
+docs = ["sphinx", "rst.linker"]
+testing = ["packaging", "importlib-resources"]
+
+[[package]]
+category = "main"
+description = "More routines for operating on iterables, beyond itertools"
+marker = "python_version > \"2.7\""
+name = "more-itertools"
+optional = false
+python-versions = ">=3.4"
+version = "7.2.0"
+
+[[package]]
+category = "main"
+description = "Core utilities for Python packages"
+name = "packaging"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "20.4"
+
+[package.dependencies]
+pyparsing = ">=2.0.2"
+six = "*"
+
+[[package]]
+category = "main"
+description = "plugin and hook calling mechanisms for python"
+name = "pluggy"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "0.13.1"
+
+[package.dependencies]
+[package.dependencies.importlib-metadata]
+python = "<3.8"
+version = ">=0.12"
+
+[package.extras]
+dev = ["pre-commit", "tox"]
+
+[[package]]
+category = "main"
+description = "Promises/A+ implementation for Python"
+name = "promise"
+optional = false
+python-versions = "*"
+version = "2.3"
+
+[package.dependencies]
+six = "*"
+
+[package.extras]
+test = ["pytest (>=2.7.3)", "pytest-cov", "coveralls", "futures", "pytest-benchmark", "mock"]
+
+[[package]]
+category = "main"
+description = "psycopg2 - Python-PostgreSQL Database Adapter"
+name = "psycopg2-binary"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*"
+version = "2.8.5"
+
+[[package]]
+category = "main"
+description = "library with cross-python path, ini-parsing, io, code, log facilities"
+name = "py"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "1.8.1"
+
+[[package]]
+category = "main"
+description = "Provides Currency and Money classes for use in your Python code."
+name = "py-moneyed"
+optional = false
+python-versions = "*"
+version = "0.8.0"
+
+[package.extras]
+tests = ["pytest (>=2.3.0)", "tox (>=1.6.0)"]
+
+[[package]]
+category = "main"
+description = "Python parsing module"
+name = "pyparsing"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "2.4.7"
+
+[[package]]
+category = "main"
+description = "pytest: simple powerful testing with Python"
+name = "pytest"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
+version = "4.6.10"
+
+[package.dependencies]
+atomicwrites = ">=1.0"
+attrs = ">=17.4.0"
+packaging = "*"
+pluggy = ">=0.12,<1.0"
+py = ">=1.5.0"
+six = ">=1.10.0"
+wcwidth = "*"
+
+[package.dependencies.colorama]
+python = "<3.4.0 || >=3.5.0"
+version = "*"
+
+[package.dependencies.importlib-metadata]
+python = "<3.8"
+version = ">=0.12"
+
+[package.dependencies.more-itertools]
+python = ">=2.8"
+version = ">=4.0.0"
+
+[package.extras]
+testing = ["argcomplete", "hypothesis (>=3.56)", "nose", "requests", "mock"]
+
+[[package]]
+category = "main"
+description = "A Django plugin for pytest."
+name = "pytest-django"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "3.9.0"
+
+[package.dependencies]
+pytest = ">=3.6"
+
+[package.extras]
+docs = ["sphinx", "sphinx-rtd-theme"]
+testing = ["django", "django-configurations (>=2.0)", "six"]
+
+[[package]]
+category = "main"
+description = "World timezone definitions, modern and historical"
+name = "pytz"
+optional = false
+python-versions = "*"
+version = "2020.1"
+
+[[package]]
+category = "main"
+description = "Reactive Extensions (Rx) for Python"
+name = "rx"
+optional = false
+python-versions = "*"
+version = "1.6.1"
+
+[[package]]
+category = "main"
+description = "This library brings functools.singledispatch from Python 3.4 to Python 2.6-3.3."
+name = "singledispatch"
+optional = false
+python-versions = "*"
+version = "3.4.0.3"
+
+[package.dependencies]
+six = "*"
+
+[[package]]
+category = "main"
+description = "Python 2 and 3 compatibility utilities"
+name = "six"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "1.15.0"
+
+[[package]]
+category = "main"
+description = "Non-validating SQL parser"
+name = "sqlparse"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "0.3.1"
+
+[[package]]
+category = "main"
+description = "Measures the displayed width of unicode strings in a terminal"
+name = "wcwidth"
+optional = false
+python-versions = "*"
+version = "0.2.3"
+
+[[package]]
+category = "main"
+description = "Backport of pathlib-compatible object wrapper for zip files"
+marker = "python_version < \"3.8\""
+name = "zipp"
+optional = false
+python-versions = ">=2.7"
+version = "1.2.0"
+
+[package.extras]
+docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
+testing = ["pathlib2", "unittest2", "jaraco.itertools", "func-timeout"]
+
+[metadata]
+content-hash = "dfd5fe68828522c541d5b2514144c0cc1fb4bf072514c7b77084b0c69a37ac4e"
+python-versions = "^3.7"
+
+[metadata.files]
+aniso8601 = [
+    {file = "aniso8601-7.0.0-py2.py3-none-any.whl", hash = "sha256:d10a4bf949f619f719b227ef5386e31f49a2b6d453004b21f02661ccc8670c7b"},
+    {file = "aniso8601-7.0.0.tar.gz", hash = "sha256:513d2b6637b7853806ae79ffaca6f3e8754bdd547048f5ccc1420aec4b714f1e"},
+]
+asgiref = [
+    {file = "asgiref-3.2.7-py2.py3-none-any.whl", hash = "sha256:9ca8b952a0a9afa61d30aa6d3d9b570bb3fd6bafcf7ec9e6bed43b936133db1c"},
+    {file = "asgiref-3.2.7.tar.gz", hash = "sha256:8036f90603c54e93521e5777b2b9a39ba1bad05773fcf2d208f0299d1df58ce5"},
+]
+atomicwrites = [
+    {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
+    {file = "atomicwrites-1.4.0.tar.gz", hash = "sha256:ae70396ad1a434f9c7046fd2dd196fc04b12f9e91ffb859164193be8b6168a7a"},
+]
+attrs = [
+    {file = "attrs-19.3.0-py2.py3-none-any.whl", hash = "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c"},
+    {file = "attrs-19.3.0.tar.gz", hash = "sha256:f7b7ce16570fe9965acd6d30101a28f62fb4a7f9e926b3bbc9b61f8b04247e72"},
+]
+colorama = [
+    {file = "colorama-0.4.1-py2.py3-none-any.whl", hash = "sha256:f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"},
+    {file = "colorama-0.4.1.tar.gz", hash = "sha256:05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d"},
+]
+django = [
+    {file = "Django-3.0.7-py3-none-any.whl", hash = "sha256:e1630333248c9b3d4e38f02093a26f1e07b271ca896d73097457996e0fae12e8"},
+    {file = "Django-3.0.7.tar.gz", hash = "sha256:5052b34b34b3425233c682e0e11d658fd6efd587d11335a0203d827224ada8f2"},
+]
+django-money = [
+    {file = "django-money-1.1.tar.gz", hash = "sha256:06507ac17aa0af548f241838bb0dd646bb5782ff2450be941b040f2857a97c1c"},
+    {file = "django_money-1.1-py3-none-any.whl", hash = "sha256:4ad7f5a82ccd24a6c0303173cc773b14cc9a51b3f0e6053bf25354282d1cf16d"},
+]
+graphene = [
+    {file = "graphene-2.1.8-py2.py3-none-any.whl", hash = "sha256:09165f03e1591b76bf57b133482db9be6dac72c74b0a628d3c93182af9c5a896"},
+    {file = "graphene-2.1.8.tar.gz", hash = "sha256:2cbe6d4ef15cfc7b7805e0760a0e5b80747161ce1b0f990dfdc0d2cf497c12f9"},
+]
+graphene-django = [
+    {file = "graphene-django-2.10.1.tar.gz", hash = "sha256:4b38812983d360560ce7e783756937b3793c9d1545e8b3881fd1af21c091a726"},
+    {file = "graphene_django-2.10.1-py2.py3-none-any.whl", hash = "sha256:1df67ac665282b45be816516e770d67cf16134331299293fd9a49cd49de05dd4"},
+]
+graphql-core = [
+    {file = "graphql-core-2.3.2.tar.gz", hash = "sha256:aac46a9ac524c9855910c14c48fc5d60474def7f99fd10245e76608eba7af746"},
+    {file = "graphql_core-2.3.2-py2.py3-none-any.whl", hash = "sha256:44c9bac4514e5e30c5a595fac8e3c76c1975cae14db215e8174c7fe995825bad"},
+]
+graphql-relay = [
+    {file = "graphql-relay-2.0.1.tar.gz", hash = "sha256:870b6b5304123a38a0b215a79eace021acce5a466bf40cd39fa18cb8528afabb"},
+    {file = "graphql_relay-2.0.1-py3-none-any.whl", hash = "sha256:ac514cb86db9a43014d7e73511d521137ac12cf0101b2eaa5f0a3da2e10d913d"},
+]
+importlib-metadata = [
+    {file = "importlib_metadata-1.1.3-py2.py3-none-any.whl", hash = "sha256:7c7f8ac40673f507f349bef2eed21a0e5f01ddf5b2a7356a6c65eb2099b53764"},
+    {file = "importlib_metadata-1.1.3.tar.gz", hash = "sha256:7a99fb4084ffe6dae374961ba7a6521b79c1d07c658ab3a28aa264ee1d1b14e3"},
+]
+more-itertools = [
+    {file = "more-itertools-7.2.0.tar.gz", hash = "sha256:409cd48d4db7052af495b09dec721011634af3753ae1ef92d2b32f73a745f832"},
+    {file = "more_itertools-7.2.0-py3-none-any.whl", hash = "sha256:92b8c4b06dac4f0611c0729b2f2ede52b2e1bac1ab48f089c7ddc12e26bb60c4"},
+]
+packaging = [
+    {file = "packaging-20.4-py2.py3-none-any.whl", hash = "sha256:998416ba6962ae7fbd6596850b80e17859a5753ba17c32284f67bfff33784181"},
+    {file = "packaging-20.4.tar.gz", hash = "sha256:4357f74f47b9c12db93624a82154e9b120fa8293699949152b22065d556079f8"},
+]
+pluggy = [
+    {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
+    {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
+]
+promise = [
+    {file = "promise-2.3.tar.gz", hash = "sha256:dfd18337c523ba4b6a58801c164c1904a9d4d1b1747c7d5dbf45b693a49d93d0"},
+]
+psycopg2-binary = [
+    {file = "psycopg2-binary-2.8.5.tar.gz", hash = "sha256:ccdc6a87f32b491129ada4b87a43b1895cf2c20fdb7f98ad979647506ffc41b6"},
+    {file = "psycopg2_binary-2.8.5-cp27-cp27m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:96d3038f5bd061401996614f65d27a4ecb62d843eb4f48e212e6d129171a721f"},
+    {file = "psycopg2_binary-2.8.5-cp27-cp27m-manylinux1_i686.whl", hash = "sha256:08507efbe532029adee21b8d4c999170a83760d38249936038bd0602327029b5"},
+    {file = "psycopg2_binary-2.8.5-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:b9a8b391c2b0321e0cd7ec6b4cfcc3dd6349347bd1207d48bcb752aa6c553a66"},
+    {file = "psycopg2_binary-2.8.5-cp27-cp27m-win32.whl", hash = "sha256:3286541b9d85a340ee4ed42732d15fc1bb441dc500c97243a768154ab8505bb5"},
+    {file = "psycopg2_binary-2.8.5-cp27-cp27m-win_amd64.whl", hash = "sha256:008da3ab51adc70a5f1cfbbe5db3a22607ab030eb44bcecf517ad11a0c2b3cac"},
+    {file = "psycopg2_binary-2.8.5-cp27-cp27mu-manylinux1_i686.whl", hash = "sha256:ba13346ff6d3eb2dca0b6fa0d8a9d999eff3dcd9b55f3a890f12b0b6362b2b38"},
+    {file = "psycopg2_binary-2.8.5-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:c8830b7d5f16fd79d39b21e3d94f247219036b29b30c8270314c46bf8b732389"},
+    {file = "psycopg2_binary-2.8.5-cp34-cp34m-win32.whl", hash = "sha256:51f7823f1b087d2020d8e8c9e6687473d3d239ba9afc162d9b2ab6e80b53f9f9"},
+    {file = "psycopg2_binary-2.8.5-cp34-cp34m-win_amd64.whl", hash = "sha256:107d9be3b614e52a192719c6bf32e8813030020ea1d1215daa86ded9a24d8b04"},
+    {file = "psycopg2_binary-2.8.5-cp35-cp35m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:930315ac53dc65cbf52ab6b6d27422611f5fb461d763c531db229c7e1af6c0b3"},
+    {file = "psycopg2_binary-2.8.5-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:6bb2dd006a46a4a4ce95201f836194eb6a1e863f69ee5bab506673e0ca767057"},
+    {file = "psycopg2_binary-2.8.5-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:3939cf75fc89c5e9ed836e228c4a63604dff95ad19aed2bbf71d5d04c15ed5ce"},
+    {file = "psycopg2_binary-2.8.5-cp35-cp35m-win32.whl", hash = "sha256:a20299ee0ea2f9cca494396ac472d6e636745652a64a418b39522c120fd0a0a4"},
+    {file = "psycopg2_binary-2.8.5-cp35-cp35m-win_amd64.whl", hash = "sha256:cc30cb900f42c8a246e2cb76539d9726f407330bc244ca7729c41a44e8d807fb"},
+    {file = "psycopg2_binary-2.8.5-cp36-cp36m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:40abc319f7f26c042a11658bf3dd3b0b3bceccf883ec1c565d5c909a90204434"},
+    {file = "psycopg2_binary-2.8.5-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:702f09d8f77dc4794651f650828791af82f7c2efd8c91ae79e3d9fe4bb7d4c98"},
+    {file = "psycopg2_binary-2.8.5-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:d1a8b01f6a964fec702d6b6dac1f91f2b9f9fe41b310cbb16c7ef1fac82df06d"},
+    {file = "psycopg2_binary-2.8.5-cp36-cp36m-win32.whl", hash = "sha256:17a0ea0b0eabf07035e5e0d520dabc7950aeb15a17c6d36128ba99b2721b25b1"},
+    {file = "psycopg2_binary-2.8.5-cp36-cp36m-win_amd64.whl", hash = "sha256:e004db88e5a75e5fdab1620fb9f90c9598c2a195a594225ac4ed2a6f1c23e162"},
+    {file = "psycopg2_binary-2.8.5-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:a34826d6465c2e2bbe9d0605f944f19d2480589f89863ed5f091943be27c9de4"},
+    {file = "psycopg2_binary-2.8.5-cp37-cp37m-manylinux1_i686.whl", hash = "sha256:cac918cd7c4c498a60f5d2a61d4f0a6091c2c9490d81bc805c963444032d0dab"},
+    {file = "psycopg2_binary-2.8.5-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:7b832d76cc65c092abd9505cc670c4e3421fd136fb6ea5b94efbe4c146572505"},
+    {file = "psycopg2_binary-2.8.5-cp37-cp37m-win32.whl", hash = "sha256:bb0608694a91db1e230b4a314e8ed00ad07ed0c518f9a69b83af2717e31291a3"},
+    {file = "psycopg2_binary-2.8.5-cp37-cp37m-win_amd64.whl", hash = "sha256:eb2f43ae3037f1ef5e19339c41cf56947021ac892f668765cd65f8ab9814192e"},
+    {file = "psycopg2_binary-2.8.5-cp38-cp38-macosx_10_9_x86_64.macosx_10_9_intel.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:07cf82c870ec2d2ce94d18e70c13323c89f2f2a2628cbf1feee700630be2519a"},
+    {file = "psycopg2_binary-2.8.5-cp38-cp38-manylinux1_i686.whl", hash = "sha256:a69970ee896e21db4c57e398646af9edc71c003bc52a3cc77fb150240fefd266"},
+    {file = "psycopg2_binary-2.8.5-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:7036ccf715925251fac969f4da9ad37e4b7e211b1e920860148a10c0de963522"},
+    {file = "psycopg2_binary-2.8.5-cp38-cp38-win32.whl", hash = "sha256:8f74e631b67482d504d7e9cf364071fc5d54c28e79a093ff402d5f8f81e23bfa"},
+    {file = "psycopg2_binary-2.8.5-cp38-cp38-win_amd64.whl", hash = "sha256:fa466306fcf6b39b8a61d003123d442b23707d635a5cb05ac4e1b62cc79105cd"},
+]
+py = [
+    {file = "py-1.8.1-py2.py3-none-any.whl", hash = "sha256:c20fdd83a5dbc0af9efd622bee9a5564e278f6380fffcacc43ba6f43db2813b0"},
+    {file = "py-1.8.1.tar.gz", hash = "sha256:5e27081401262157467ad6e7f851b7aa402c5852dbcb3dae06768434de5752aa"},
+]
+py-moneyed = [
+    {file = "py-moneyed-0.8.0.tar.gz", hash = "sha256:ec73795171919d537880a33c44d07fcdf0a5225e8368684fe02f0e75a6404742"},
+    {file = "py_moneyed-0.8.0-py2.py3-none-any.whl", hash = "sha256:c6691b914a5e4b5b2335cf113620479a52cc82988c0e143435a7c5c7d60cd4ad"},
+]
+pyparsing = [
+    {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
+    {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
+]
+pytest = [
+    {file = "pytest-4.6.10-py2.py3-none-any.whl", hash = "sha256:a24f6d11abff602da7b8aa33520734d604d25c4f070222e23667bb9782ba763e"},
+    {file = "pytest-4.6.10.tar.gz", hash = "sha256:0031b5021e1204f12e5a044500fbf31e3f64c6f2d69ded910af003abd0d91ae4"},
+]
+pytest-django = [
+    {file = "pytest-django-3.9.0.tar.gz", hash = "sha256:664e5f42242e5e182519388f01b9f25d824a9feb7cd17d8f863c8d776f38baf9"},
+    {file = "pytest_django-3.9.0-py2.py3-none-any.whl", hash = "sha256:64f99d565dd9497af412fcab2989fe40982c1282d4118ff422b407f3f7275ca5"},
+]
+pytz = [
+    {file = "pytz-2020.1-py2.py3-none-any.whl", hash = "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed"},
+    {file = "pytz-2020.1.tar.gz", hash = "sha256:c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048"},
+]
+rx = [
+    {file = "Rx-1.6.1-py2.py3-none-any.whl", hash = "sha256:7357592bc7e881a95e0c2013b73326f704953301ab551fbc8133a6fadab84105"},
+    {file = "Rx-1.6.1.tar.gz", hash = "sha256:13a1d8d9e252625c173dc795471e614eadfe1cf40ffc684e08b8fff0d9748c23"},
+]
+singledispatch = [
+    {file = "singledispatch-3.4.0.3-py2.py3-none-any.whl", hash = "sha256:833b46966687b3de7f438c761ac475213e53b306740f1abfaa86e1d1aae56aa8"},
+    {file = "singledispatch-3.4.0.3.tar.gz", hash = "sha256:5b06af87df13818d14f08a028e42f566640aef80805c3b50c5056b086e3c2b9c"},
+]
+six = [
+    {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
+    {file = "six-1.15.0.tar.gz", hash = "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259"},
+]
+sqlparse = [
+    {file = "sqlparse-0.3.1-py2.py3-none-any.whl", hash = "sha256:022fb9c87b524d1f7862b3037e541f68597a730a8843245c349fc93e1643dc4e"},
+    {file = "sqlparse-0.3.1.tar.gz", hash = "sha256:e162203737712307dfe78860cc56c8da8a852ab2ee33750e33aeadf38d12c548"},
+]
+wcwidth = [
+    {file = "wcwidth-0.2.3-py2.py3-none-any.whl", hash = "sha256:980fbf4f3c196c0f329cdcd1e84c554d6a211f18e252e525a0cf4223154a41d6"},
+    {file = "wcwidth-0.2.3.tar.gz", hash = "sha256:edbc2b718b4db6cdf393eefe3a420183947d6aa312505ce6754516f458ff8830"},
+]
+zipp = [
+    {file = "zipp-1.2.0-py2.py3-none-any.whl", hash = "sha256:e0d9e63797e483a30d27e09fffd308c59a700d365ec34e93cc100844168bf921"},
+    {file = "zipp-1.2.0.tar.gz", hash = "sha256:c70410551488251b0fee67b460fb9a536af8d6f9f008ad10ac51f615b6a521b1"},
+]

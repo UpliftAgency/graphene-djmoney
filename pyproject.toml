@@ -8,6 +8,10 @@ authors = ["Paul Craciunoiu <paul@craciunoiu.net>"]
 python = "^3.7"
 graphene = "<3"
 Django = ">2"
+graphene-django = ">=2"
+django-money = "^1.1"
+psycopg2-binary = "^2.8.5"
+pytest-django = "^3.9.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
