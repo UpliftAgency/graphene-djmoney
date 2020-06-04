@@ -1,0 +1,16 @@
+language: python
+
+python:
+  - "3.7"
+  - "3.8"
+
+install:
+  - pip install tox tox-travis
+script: tox
+# after_success:
+#   - pip install coveralls
+#   - coveralls
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.cache/pre-commit
