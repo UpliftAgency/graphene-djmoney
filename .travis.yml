@@ -9,6 +9,12 @@ matrix:
   - python: 3.8
     dist: xenial
 
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database test_graphene_djmoney;' -U postgres
+
 before_install:
   - pip install poetry
 
@@ -18,6 +24,10 @@ install:
 
 script:
   - tox
+
+test:
+  adapter: postgresql
+  database: test_graphene_djmoney
 
 # after_success:
 #   - pip install coveralls

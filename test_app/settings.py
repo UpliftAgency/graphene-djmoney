@@ -20,7 +20,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "graphene_djmoney",
         "USER": "postgres",
-        "PASSWORD": os.environ.get("PG_PASSWORD", "postgres"),
+        "PASSWORD": os.environ.get("PG_PASSWORD", ""),
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
