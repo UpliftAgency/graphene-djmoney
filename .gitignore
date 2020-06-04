@@ -4,6 +4,7 @@ __pycache__
 report.html
 __generated__
 *.egg-info/
+dist/
 
 # Editor
 .idea

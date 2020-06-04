@@ -1,0 +1,46 @@
+language: python
+
+python:
+  - "3.7"
+  - "3.8"
+
+matrix:
+  include:
+  - python: 3.8
+    dist: xenial
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database test_graphene_djmoney;' -U postgres
+
+before_install:
+  - pip install poetry
+
+install:
+  - poetry install -v
+  - pip install tox tox-travis
+
+script:
+  - tox
+
+test:
+  adapter: postgresql
+  database: test_graphene_djmoney
+
+# after_success:
+#   - pip install coveralls
+#   - coveralls
+
+deploy:
+  provider: script
+  script: poetry publish
+  on:
+    tags: true
+    condition: "$TRAVIS_PYTHON_VERSION == 3.8"
+
+env:
+  global:
+    - secure: jns4DuT+LPSAtRnjzC0SjRIVr4kOuf9XReO8jzOJIkJvH7zgGtFu5mC8Re53FSnYSPcF+w+F1rHgboIggJTEKxxX7YsxY05820kqeON6QGlr1zOoBWkBc9BL5QVd7xa+2qkqNtYy8e+OKn3dGVsjwPC4Of/FZCfwdaGuYrOFGizggLQ9naw/vRi/48VOG76oNi3EeT5icu226R3iQES6HYAKq4CWZSl/LoeyqZidlws+MnA+osJGSwAUBi5CK/XHFzh31tX1YBgMK8XGyevq4Nx1QnOAZHG6e7BvxeMo7eOBKeEi0PMiIFNejN5EAX8WFAsbSMwByEMSvzRxYUMriYPSEK0qSRhdD/aD4WnX8Q6lJCW5nFAkzwilSTRD6CBrzWV0gWtcHKQb6eJ4hpDIB75oQL0e/9Z0b5oYhc2NVkGZaTLU0iRdDtF38yUBIUYY2GUYp3aE92j4nLoOtav9FirzaluKrC60ls1YYYJn6Go1fjk2HkIP30s5qQ7KoQW9Rvm1Ar8II0aSYAKqvzxkPsjrvNkE51lRYhK4ZIw7Ho53rnJqRrGg6Z5ltX1cGhjMooJkxHIx1PeCoYXcU2zzP+AEev2SEqf5PuQFSAy92p5AI1YZdlKp6JGFwUQS5LX1rutoqcKaW/vGjKI3uf6UK2i4bs3b1eBfcesEtu2PvTk=
+    - secure: qig8Y5JuZOyIAldEdy6cvu/mL/D6+UyS6dCT62+r72XD4dS0q90M7faAeAq27u9y8DaPwbHKp+IKIVvVzZBGZQgOeQ5Jk75jNkCzDD3gv8CYDydBH3YtFxUDw4mH38e9cqQgpv4SHQ1AY8wXdyjUJy6YJZBDre8JpYOH4c2gi4A9GQDh11lV/LMCAiwGl40KFIkP6P3WAe8yjwT7rMVI8VdFtF7EZhgSzdjyJEV2DCbBIAmYfFYtuT050GgQ8duZzzoHtAv17wMjafkhY8hwm0UevV6+rOjPcD+H4J4qTuhskIapX+/Z+Z59BB/SayXBHfvrxojjcoOLYSuz+3VqC3M7AWYeD6Wm+FmLVs3I1YA2BNF5XiHAmfRSsIMgbROIXW/mAKJbnSzLV7kSRlexLaRCVj7iwHr6u3s0P+jeh6mQnhpK4zjEi2koS1GX3JeErP/bkRbUX1HMMF/mKRXNtkaw3rRYXobY5twUAg+k3+Bc/DwcJhuNOMn9PbOlL2kN+1uAftA7OLQR0NeUY1LrNYugGXxBXXalnDchsCjsVU/cXJXg8zDv6o0z5HnQ435JMU0wHYPF6ojRx5R88qB1mK21WcamcKczh72itU4nbTxv/zd1y90plybApggnSwFTTDOsOM1s1WmChCy9XXlLRsuWqFEV2CKq+05Lwog3eok=
