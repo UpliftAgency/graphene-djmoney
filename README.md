@@ -4,7 +4,16 @@
 
 ## Introduction
 
-Automagically get this query:
+GraphQL Money types for Django using graphene and django-money (djmoney). If you use `django`, `graphene_django`, and `django-money`, this library is for you.
+
+Supported on:
+
+* Python 3.7+ (likely earlier versions too, needs tested)
+* Django 2+
+* graphene-django 2+
+* django-money 1+
+
+Here's how it works. Automagically get this query:
 
 ```graphql
 query Products {
