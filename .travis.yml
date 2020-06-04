@@ -35,10 +35,9 @@ test:
 
 before_deploy:
 - poetry config http-basic.pypi $PYPI_USER $PYPI_PASSWORD
-- poetry build
 deploy:
   provider: script
-  script: poetry publish
+  script: poetry publish --build
   on:
     tags: true
     condition: "$TRAVIS_PYTHON_VERSION == 3.8"
