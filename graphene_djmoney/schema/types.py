@@ -116,7 +116,7 @@ class MoneyInput(InputObjectType):
 
 @convert_django_field.register(MoneyField)
 def convert_field_to_graphql_money(field, registry=None):
-    return graphene.Field(Money, description=field.help_text)
+    return graphene.Field(Money, description=field.help_text, required=(not field.null))
 
 
 def get_sign_definition(money_dict):
