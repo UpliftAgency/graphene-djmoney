@@ -3,10 +3,11 @@ language: python
 python:
   - "3.7"
   - "3.8"
+  - "3.9"
 
 matrix:
   include:
-  - python: 3.8
+  - python: 3.9
     dist: xenial
 
 services:
@@ -40,7 +41,7 @@ deploy:
   script: poetry publish --build
   on:
     tags: true
-    condition: "$TRAVIS_PYTHON_VERSION == 3.8"
+    condition: "$TRAVIS_PYTHON_VERSION == 3.9"
 
 env:
   global:

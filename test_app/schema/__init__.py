@@ -1,4 +1,3 @@
-from djmoney.money import Money as DJMoney
 import graphene
 from graphene_djmoney.schema import MoneyInput
 
@@ -23,7 +22,7 @@ class UpdateProduct(graphene.Mutation):
 
     def mutate(root, info, id, cost):
         models.Product.objects.filter(id=id).update(
-            cost=DJMoney(cost.amount, cost.currency),
+            cost=cost.money,
         )
         product = models.Product.objects.get(id=id)
         return UpdateProduct(product=product, success=True)
