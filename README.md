@@ -36,7 +36,6 @@ fragment moneyFragment on Money {
         numeric
         symbol
         prefix
-        suffix
     }
 }
 ```

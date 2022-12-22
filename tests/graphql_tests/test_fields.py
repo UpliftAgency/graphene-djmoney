@@ -21,7 +21,6 @@ fragment moneyFragment on Money {
         numeric
         symbol
         prefix
-        suffix
     }
     amountWith1Digit: formatAmount(decimals: 1)
 }
@@ -76,7 +75,6 @@ class FieldsTestCase(GraphQLTestCase):
                     "numeric": "840",
                     "symbol": "$",
                     "prefix": "$",
-                    "suffix": "",
                 },
             },
         }
@@ -113,10 +111,9 @@ class FieldsTestCase(GraphQLTestCase):
             "amountStr": "456.78",
             "currency": {
                 "code": "GBP",
-                "name": "Pound Sterling",
+                "name": "British Pound",
                 "numeric": "826",
-                "symbol": "GB£",
-                "prefix": "GB£",
-                "suffix": "",
+                "symbol": "£",
+                "prefix": "£",
             },
         }

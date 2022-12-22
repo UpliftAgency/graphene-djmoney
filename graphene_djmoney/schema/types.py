@@ -1,18 +1,13 @@
-from django.utils.functional import cached_property
-
 import graphene
 from graphene.types import InputObjectType, ObjectType, Scalar
 from graphql.language import ast
 from graphene_django.converter import convert_django_field
-from moneyed.localization import CurrencyFormatter
-
+from babel.numbers import get_currency_symbol
 from djmoney.models.fields import MoneyField
 from djmoney.money import Money as DJMoney, get_current_locale
 from djmoney.settings import BASE_CURRENCY, DECIMAL_PLACES
 
 __all__ = ("Money", "MoneyInput", "StringMoney")
-
-_cf = CurrencyFormatter()
 
 
 class StringMoney(Scalar):
@@ -58,18 +53,12 @@ class Currency(ObjectType):
     prefix = graphene.String(
         description="The currency's prefix, e.g. $ for USD", required=True
     )
-    suffix = graphene.String(
-        description="The currency's symbol, e.g. € for EUR", required=True
-    )
 
     def resolve_symbol(self, info, **kwargs):
         return "".join(get_sign_definition(self)).strip()
 
     def resolve_prefix(self, info, **kwargs):
         return get_sign_definition(self)[0].strip()
-
-    def resolve_suffix(self, info, **kwargs):
-        return get_sign_definition(self)[1].strip()
 
 
 class Money(ObjectType):
@@ -122,7 +111,7 @@ def convert_field_to_graphql_money(field, registry=None):
 def get_sign_definition(money_dict):
     if "_sign_definition" not in money_dict:
         try:
-            money_dict["_sign_definition"] = _cf.get_sign_definition(money_dict["code"], get_current_locale())
-        except IndexError:
-            money_dict["_sign_definition"] = ("", "")
+            money_dict["_sign_definition"] = get_currency_symbol(money_dict["code"], locale=get_current_locale())
+        except IndexError: #€ for EUR
+            money_dict["_sign_definition"] = ""
     return money_dict["_sign_definition"]
