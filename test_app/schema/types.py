@@ -1,7 +1,6 @@
-from django.contrib.auth import get_user_model
 import graphene
+from django.contrib.auth import get_user_model
 from graphene_django import DjangoObjectType
-from graphene_djmoney.schema import Money
 
 from test_app import models
 

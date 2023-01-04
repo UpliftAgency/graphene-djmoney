@@ -1,14 +1,11 @@
-
 import json
 
 from django.contrib.auth import get_user_model
-from graphql_relay import to_global_id
 from graphene_django.utils.testing import GraphQLTestCase
+from graphql_relay import to_global_id
 
-from djmoney.money import Money
-from test_app.schema import schema
 from test_app import models
-
+from test_app.schema import schema
 
 MONEY_FRAGMENT = """
 fragment moneyFragment on Money {
@@ -22,6 +19,8 @@ fragment moneyFragment on Money {
         symbol
         prefix
     }
+    formatted
+    formatExplicit: formatted(formatType: "name")
     amountWith1Digit: formatAmount(decimals: 1)
 }
 """
@@ -36,9 +35,11 @@ class FieldsTestCase(GraphQLTestCase):
         )
 
         products = []
-        for title, amount in (("Product 1", 100), ("Product 2", 200)):
+        for title, amount in (("Product 1", 123.456), ("Product 2", 234.987)):
             products.append(
-                models.Product.objects.get_or_create(creator=user, title=title, cost=amount)[0]
+                models.Product.objects.get_or_create(
+                    creator=user, title=title, cost=amount
+                )[0]
             )
 
         response = self.query(
@@ -65,10 +66,10 @@ class FieldsTestCase(GraphQLTestCase):
         assert gql_product == {
             "id": to_global_id("Product", products[0].id),
             "cost": {
-                "asString": "100.00 USD",
-                "amount": 100.0,
-                "amountWith1Digit": "100.0",
-                "amountStr": "100.00",
+                "asString": "123.46 USD",
+                "amount": 123.46,
+                "amountWith1Digit": "123.5",
+                "amountStr": "123.46",
                 "currency": {
                     "code": "USD",
                     "name": "US Dollar",
@@ -76,6 +77,8 @@ class FieldsTestCase(GraphQLTestCase):
                     "symbol": "$",
                     "prefix": "$",
                 },
+                "formatted": "$123.46",
+                "formatExplicit": "123.46 US dollars",
             },
         }
 
@@ -116,4 +119,6 @@ class FieldsTestCase(GraphQLTestCase):
                 "symbol": "£",
                 "prefix": "£",
             },
+            "formatted": "£456.78",
+            "formatExplicit": "456.78 British pounds",
         }

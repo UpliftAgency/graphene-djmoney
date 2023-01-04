@@ -1,3 +1,1 @@
-__version__ = '0.1.3'
-
-from . import schema
+__version__ = "0.1.3"

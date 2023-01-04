@@ -13,8 +13,16 @@ django-money = "^3.0.0"
 psycopg2-binary = "^2.8.5"
 
 [tool.poetry.dev-dependencies]
+autoflake = "*"
+bandit = "*"
+black = "*"
 pytest = "*"
 pytest-django = "*"
+flake8 = "*"
+flake8-datetimez = "*"
+isort = "*"
+safety = "*"
+ssort = "*"
 
 [build-system]
 requires = ["poetry>=0.12"]
