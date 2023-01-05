@@ -20,7 +20,8 @@ fragment moneyFragment on Money {
         prefix
     }
     formatted
-    formatExplicit: formatted(formatType: "name")
+    formatSpecified: formatted(format: "¤#,##0.00")
+    formatType: formatted(formatType: "name")
     amountWith1Digit: formatAmount(decimals: 1)
 }
 """
@@ -63,6 +64,8 @@ class FieldsTestCase(GraphQLTestCase):
 
         content = json.loads(response.content)
         gql_product = content["data"]["products"][0]
+        formatted = gql_product["cost"].pop("formatted")
+        assert formatted.replace("\xa0", "") == "$123.46"
         assert gql_product == {
             "id": to_global_id("Product", products[0].id),
             "cost": {
@@ -77,8 +80,8 @@ class FieldsTestCase(GraphQLTestCase):
                     "symbol": "$",
                     "prefix": "$",
                 },
-                "formatted": "$123.46",
-                "formatExplicit": "123.46 US dollars",
+                "formatSpecified": "$123.46",
+                "formatType": "123.46 US dollars",
             },
         }
 
@@ -107,6 +110,8 @@ class FieldsTestCase(GraphQLTestCase):
 
         content = json.loads(response_mutate.content)
         updated_product = content["data"]["updateProduct"]["product"]
+        formatted_updated = updated_product["cost"].pop("formatted")
+        assert formatted_updated.replace("\xa0", "") == "£456.78"
         assert updated_product["cost"] == {
             "asString": "456.78 GBP",
             "amount": 456.78,
@@ -119,6 +124,6 @@ class FieldsTestCase(GraphQLTestCase):
                 "symbol": "£",
                 "prefix": "£",
             },
-            "formatted": "£456.78",
-            "formatExplicit": "456.78 British pounds",
+            "formatSpecified": "£456.78",
+            "formatType": "456.78 British pounds",
         }
