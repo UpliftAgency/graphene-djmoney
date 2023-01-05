@@ -114,6 +114,18 @@ GRAPHENE = {
 pip install graphene-djmoney
 ```
 
+### Changelog
+
+**0.2.0**
+
+    - #4, #5, #6 Upgrade to py-moneyed 2.0, add babel format support (new field, `formatted`)
+    - **Breaking change**: removes `suffix` from schema, since babel doesn't support out of the box.
+
+
+**0.1.3**
+
+    Initial release, sort of.
+
 ## Contributing
 
 Running tests:
