@@ -6,9 +6,10 @@ authors = ["Paul Craciunoiu <paul@craciunoiu.net>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-graphene = "<3"
-Django = ">2"
+graphene = ">=2.1.7,<3"
+graphql-core = ">=2.1.0"
 graphene-django = ">=2"
+Django = ">2"
 django-money = "^3.0.0"
 psycopg2-binary = "^2.8.5"
 
