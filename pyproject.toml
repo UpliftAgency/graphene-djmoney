@@ -6,6 +6,7 @@ authors = ["Paul Craciunoiu <paul@craciunoiu.net>"]
 readme = "README.md"
 repository = "https://github.com/UpliftAgency/graphene-djmoney"
 keywords = ["graphene", "djmoney", "moneyed", "graphql", "money", "currency"]
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.7"
