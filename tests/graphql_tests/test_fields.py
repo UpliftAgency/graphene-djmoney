@@ -1,14 +1,11 @@
-
 import json
 
 from django.contrib.auth import get_user_model
-from graphql_relay import to_global_id
 from graphene_django.utils.testing import GraphQLTestCase
+from graphql_relay import to_global_id
 
-from djmoney.money import Money
-from test_app.schema import schema
 from test_app import models
-
+from test_app.schema import schema
 
 MONEY_FRAGMENT = """
 fragment moneyFragment on Money {
@@ -21,8 +18,10 @@ fragment moneyFragment on Money {
         numeric
         symbol
         prefix
-        suffix
     }
+    formatted
+    formatSpecified: formatted(format: "¤#,##0.00")
+    formatType: formatted(formatType: "name")
     amountWith1Digit: formatAmount(decimals: 1)
 }
 """
@@ -37,9 +36,11 @@ class FieldsTestCase(GraphQLTestCase):
         )
 
         products = []
-        for title, amount in (("Product 1", 100), ("Product 2", 200)):
+        for title, amount in (("Product 1", 123.456), ("Product 2", 234.987)):
             products.append(
-                models.Product.objects.get_or_create(creator=user, title=title, cost=amount)[0]
+                models.Product.objects.get_or_create(
+                    creator=user, title=title, cost=amount
+                )[0]
             )
 
         response = self.query(
@@ -63,21 +64,24 @@ class FieldsTestCase(GraphQLTestCase):
 
         content = json.loads(response.content)
         gql_product = content["data"]["products"][0]
+        formatted = gql_product["cost"].pop("formatted")
+        assert formatted.replace("\xa0", "") == "$123.46"
         assert gql_product == {
             "id": to_global_id("Product", products[0].id),
             "cost": {
-                "asString": "100.00 USD",
-                "amount": 100.0,
-                "amountWith1Digit": "100.0",
-                "amountStr": "100.00",
+                "asString": "123.46 USD",
+                "amount": 123.46,
+                "amountWith1Digit": "123.5",
+                "amountStr": "123.46",
                 "currency": {
                     "code": "USD",
                     "name": "US Dollar",
                     "numeric": "840",
                     "symbol": "$",
                     "prefix": "$",
-                    "suffix": "",
                 },
+                "formatSpecified": "$123.46",
+                "formatType": "123.46 US dollars",
             },
         }
 
@@ -106,6 +110,8 @@ class FieldsTestCase(GraphQLTestCase):
 
         content = json.loads(response_mutate.content)
         updated_product = content["data"]["updateProduct"]["product"]
+        formatted_updated = updated_product["cost"].pop("formatted")
+        assert formatted_updated.replace("\xa0", "") == "£456.78"
         assert updated_product["cost"] == {
             "asString": "456.78 GBP",
             "amount": 456.78,
@@ -113,10 +119,11 @@ class FieldsTestCase(GraphQLTestCase):
             "amountStr": "456.78",
             "currency": {
                 "code": "GBP",
-                "name": "Pound Sterling",
+                "name": "British Pound",
                 "numeric": "826",
-                "symbol": "GB£",
-                "prefix": "GB£",
-                "suffix": "",
+                "symbol": "£",
+                "prefix": "£",
             },
+            "formatSpecified": "£456.78",
+            "formatType": "456.78 British pounds",
         }

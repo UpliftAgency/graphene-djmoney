@@ -1,5 +1,7 @@
 # graphene-djmoney
 
+![python package](https://github.com/UpliftAgency/graphene-djmoney/actions/workflows/pythonpackage.yml/badge.svg)
+
 [![Build Status](https://travis-ci.org/UpliftAgency/graphene-djmoney.svg?branch=master)](https://travis-ci.org/UpliftAgency/graphene-djmoney) [![PyPI version](https://badge.fury.io/py/graphene-djmoney.svg)](https://badge.fury.io/py/graphene-djmoney)
 
 ## Introduction
@@ -36,7 +38,6 @@ fragment moneyFragment on Money {
         numeric
         symbol
         prefix
-        suffix
     }
 }
 ```
@@ -114,6 +115,18 @@ GRAPHENE = {
 ```bash
 pip install graphene-djmoney
 ```
+
+### Changelog
+
+**0.2.0**
+
+    - #5, #6, #7 Upgrade to py-moneyed 2.0, add babel format support (new field, `formatted`)
+    - **Breaking change**: removes `suffix` from schema, since babel doesn't support out of the box.
+
+
+**0.1.3**
+
+    Initial release, sort of.
 
 ## Contributing
 

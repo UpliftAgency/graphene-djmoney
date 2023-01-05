@@ -1,3 +1,9 @@
-__version__ = '0.1.3'
+try:
+    import importlib.metadata as importlib_metadata
+except ModuleNotFoundError:
+    # Shim for Python 3.7. Remove when support is dropped.
+    import importlib_metadata
 
-from . import schema
+__version__ = importlib_metadata.version(__name__)
+
+from . import schema  # NOQA
