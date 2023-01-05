@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "graphene-djmoney"
-version = "0.2.2"
+version = "0.2.3"
 description = "GraphQL Money types for Django using graphene and django-money (djmoney)."
 authors = ["Paul Craciunoiu <paul@craciunoiu.net>"]
 readme = "README.md"
