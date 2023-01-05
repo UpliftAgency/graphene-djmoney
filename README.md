@@ -1,5 +1,7 @@
 # graphene-djmoney
 
+![python package](https://github.com/UpliftAgency/graphene-djmoney/actions/workflows/pythonpackage.yml/badge.svg)
+
 [![Build Status](https://travis-ci.org/UpliftAgency/graphene-djmoney.svg?branch=master)](https://travis-ci.org/UpliftAgency/graphene-djmoney) [![PyPI version](https://badge.fury.io/py/graphene-djmoney.svg)](https://badge.fury.io/py/graphene-djmoney)
 
 ## Introduction
