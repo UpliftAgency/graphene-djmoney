@@ -74,6 +74,7 @@ USE_TZ = True
 
 GRAPHENE = {
     "SCHEMA": "test_app.schema.schema",  # Where your Graphene schema lives
+    "TESTING_ENDPOINT": "/graphql/",
 }
 
 # Currencies & Money

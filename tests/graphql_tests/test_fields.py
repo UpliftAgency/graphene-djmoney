@@ -65,7 +65,7 @@ class FieldsTestCase(GraphQLTestCase):
         content = json.loads(response.content)
         gql_product = content["data"]["products"][0]
         formatted = gql_product["cost"].pop("formatted")
-        assert formatted.replace("\xa0", "") == "$123.46"
+        assert formatted.replace("\xa0", "") == "US$123.46"
         assert gql_product == {
             "id": to_global_id("Product", products[0].id),
             "cost": {
@@ -80,8 +80,8 @@ class FieldsTestCase(GraphQLTestCase):
                     "symbol": "$",
                     "prefix": "$",
                 },
-                "formatSpecified": "$123.46",
-                "formatType": "123.46 US dollars",
+                "formatSpecified": "US$123.46",
+                "formatType": "123.46 U.S. dollars",
             },
         }
 
